@@ -7,7 +7,7 @@
 - Device model: Kindle 11th Generation, 2024 Release
 - KindleModding device code: KT6
 - Firmware: 5.19.6
-- 当前仍未最终确认 KT6 + 5.19.6 的稳定越狱支持
+- 已确认 Véra 支持 KT6 + 5.19.6，并已有实际成功案例
 - 当前不执行任何越狱操作
 
 ## Phase 0 - Current State
@@ -19,15 +19,21 @@
 
 ## Phase 1 - Verify Jailbreak Support
 
-需要确认：
+已基本确认：
 
-- KT6 + 5.19.6 是否有官方或社区明确支持
-- 使用哪一种越狱方案
-- 成功案例是否足够
-- 已知失败风险
-- 是否存在恢复方案
+- Véra 支持 KT6 + 5.19.6
+- 已存在 KT6 2024 成功使用 Véra 越狱并运行 KOReader 的实际案例
+- KindleModding 的 KPM 工具链包含针对 KT6 新固件环境的兼容处理
 
-只有以上事项全部确认后，才能进入下一阶段。在此之前，不假设 KT6 + 5.19.6 已经支持越狱。
+真正执行前仍需完成：
+
+- 再次确认 Véra 官方向导仍识别 KT6 + 5.19.6
+- 阅读恢复和失败处理文档
+- 明确出现问题时的处理边界
+
+越狱仍然不是零风险。其他新 Kindle 型号出现过触控异常、启动循环、KOReader 异常等问题，这些不能直接推断 KT6 必然出现，但应作为风险参考。新 Kindle 的恢复能力不如老型号，不能简单依赖传统分区备份恢复。
+
+只有剩余事项确认完成后，才能进入下一阶段。
 
 ## Phase 2 - Prepare Before Jailbreak
 
@@ -103,7 +109,7 @@
 ## Checklist
 
 - [x] Phase 0 - Current State：完成
-- [ ] Phase 1 - Verify Jailbreak Support：进行中（当前阶段）
+- [ ] Phase 1 - Verify Jailbreak Support：基本确认（当前阶段）
 - [ ] Phase 2 - Prepare Before Jailbreak：未开始
 - [ ] Phase 3 - Jailbreak：未开始
 - [ ] Phase 4 - Install KOReader：未开始
