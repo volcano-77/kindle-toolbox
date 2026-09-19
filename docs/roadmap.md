@@ -1,119 +1,40 @@
-# Kindle 后续改造路线图
+# Kindle Toolbox Roadmap
 
-本文是后续改造的阶段规划，不是当前执行教程。
+本路线图记录当前完成状态和后续维护方向，不是越狱执行教程。
 
-## Device
+## Completed
 
-- Device model: Kindle 11th Generation, 2024 Release
-- KindleModding device code: KT6
-- Firmware: 5.19.6
-- 已确认 Véra 支持 KT6 + 5.19.6，并已有实际成功案例
-- 当前不执行任何越狱操作
+- [x] ✅ Verified — 在 Kindle 11th Generation（2024 Release，KT6）固件 5.19.6 上使用 Véra 完成越狱
+- [x] ✅ Verified — 越狱后 Kindle 原生系统正常启动
+- [x] ✅ Verified — 安装并运行 KOReader
+- [x] ✅ Verified — 使用 `/mnt/us/KOReader_Library` 作为主要书库根目录
+- [x] ✅ Verified — 阅读 EPUB/PDF，并保存阅读进度
+- [x] ✅ Verified — 启用 Reading Statistics、阅读历史、Calendar View 和每日阅读记录
+- [x] ✅ Verified — 安装 WeRead 插件，登录、打开书架与书籍、下载完整章节并生成本地 EPUB
+- [x] ✅ Verified — 使用 FileSync 从手机无线上传 EPUB 到 `KOReader_Library`
+- [x] ✅ Verified — 安装并使用 PNG 自定义屏保与多图轮播
+- [x] ✅ Verified — 安装并使用 SimpleUI 作为 KOReader 主页 UI
+- [x] ✅ Verified — 开始使用 KOReader Collections 进行逻辑分类
 
-## Phase 0 - Current State
+## Optional Improvements
 
-- 保持飞行模式
-- 不升级固件
-- 继续使用原生 Kindle
-- 可以正常整理本地书籍
+- [ ] ⚪ Optional — 记录 KOReader、KPM 和各第三方插件的当前安装版本
+- [ ] ⚪ Optional — 确认 KPM 的准确项目来源与设备安装目录
+- [ ] ⚪ Optional — 制定阅读统计、重要笔记和关键配置的定期备份流程
+- [ ] ⚪ Optional — 继续调整字体、排版、手势、状态栏和其他 UI 选项
+- [ ] ⚪ Optional — 完善 Collections 分类与使用约定
+- [ ] 🟡 To Verify — 使用 FileSync 向 `/mnt/us/screensavers` 上传 PNG 后，是否可直接进入屏保轮播
 
-## Phase 1 - Verify Jailbreak Support
+## Future Ideas
 
-已基本确认：
+- [ ] ⚪ Optional — 编写从空白设备恢复当前配置的核对清单
+- [ ] ⚪ Optional — 在任何固件升级前重新检查 Véra、KPM、KOReader 和插件兼容性
+- [ ] ⚪ Optional — 在 KOReader 或插件升级前记录版本、阅读 release notes/changelog，并准备回退方案
+- [ ] ⚪ Optional — 补充已验证的配置备份与恢复结果
 
-- Véra 支持 KT6 + 5.19.6
-- 已存在 KT6 2024 成功使用 Véra 越狱并运行 KOReader 的实际案例
-- KindleModding 的 KPM 工具链包含针对 KT6 新固件环境的兼容处理
+## Maintenance Rules
 
-真正执行前仍需完成：
-
-- 再次确认 Véra 官方向导仍识别 KT6 + 5.19.6
-- 阅读恢复和失败处理文档
-- 明确出现问题时的处理边界
-
-越狱仍然不是零风险。其他新 Kindle 型号出现过触控异常、启动循环、KOReader 异常等问题，这些不能直接推断 KT6 必然出现，但应作为风险参考。新 Kindle 的恢复能力不如老型号，不能简单依赖传统分区备份恢复。
-
-只有剩余事项确认完成后，才能进入下一阶段。
-
-## Phase 2 - Prepare Before Jailbreak
-
-未来确认支持后再进行：
-
-- 备份重要书籍和笔记
-- 记录当前设备状态
-- 准备所需文件
-- 阅读完整安装与恢复文档
-- 确认设备电量、USB 连接和电脑环境
-
-## Phase 3 - Jailbreak
-
-- 按已确认兼容的官方或社区文档执行
-- 不混用不同教程
-- 不使用未知来源文件
-- 执行前再次核对型号和固件
-- 完成后先验证 Kindle 原生功能是否正常
-
-本阶段不提供当前可直接执行的命令。
-
-## Phase 4 - Install KOReader
-
-未来越狱成功后：
-
-- 安装适配当前 Kindle 的 KOReader
-- 第一次仅验证：
-  - 能否正常启动
-  - EPUB/PDF 是否可打开
-  - 字体与排版是否正常
-  - 退出后能否正常回到 Kindle 原生界面
-- 暂时不安装其他插件
-
-## Phase 5 - Enable Reading Statistics
-
-验证 KOReader 自带统计功能：
-
-- 阅读时间
-- 阅读页数
-- Calendar View
-- Today's Timeline
-- 当前书统计
-
-## Phase 6 - Install WeRead Plugin
-
-在 KOReader 稳定后再考虑：
-
-- 安装 `finlater/weread.koplugin`
-- 配置微信读书 Skill
-- 获取 API Key
-- 扫码登录
-- 测试书架、书评、划线、进度同步
-- 测试章节下载和本地缓存
-
-## Phase 7 - Customization
-
-最后才考虑：
-
-- 字体
-- 页面排版
-- 手势
-- 状态栏
-- 屏保
-- 其他 UI 美化
-
-## Phase 8 - Maintenance
-
-- 固件升级前先检查越狱兼容性
-- KOReader 升级前查看 release notes
-- 微信读书插件升级前查看 changelog
-- 定期备份阅读统计与重要笔记
-
-## Checklist
-
-- [x] Phase 0 - Current State：完成
-- [ ] Phase 1 - Verify Jailbreak Support：基本确认（当前阶段）
-- [ ] Phase 2 - Prepare Before Jailbreak：未开始
-- [ ] Phase 3 - Jailbreak：未开始
-- [ ] Phase 4 - Install KOReader：未开始
-- [ ] Phase 5 - Enable Reading Statistics：未开始
-- [ ] Phase 6 - Install WeRead Plugin：未开始
-- [ ] Phase 7 - Customization：未开始
-- [ ] Phase 8 - Maintenance：未开始
+- 只把当前设备上实际测试成功的结果标为 `✅ Verified`。
+- 未测试内容使用 `🟡 To Verify`，非必需改进使用 `⚪ Optional`。
+- 不在本仓库保存第三方项目源码、账号凭证或敏感设备标识。
+- 不因为当前设备成功，就推断其他型号或固件同样兼容。
