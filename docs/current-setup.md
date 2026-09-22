@@ -24,6 +24,7 @@
 | Custom Screensaver | ✅ Verified | PNG display and multi-image rotation |
 | SimpleUI | ✅ Verified | KOReader home screen and reading information |
 | KPM | ✅ Verified | Installed and usable; exact version and source need verification |
+| Calibre 9.15.0 | ✅ Verified | Windows master library, metadata, classification, and EPUB transfer |
 
 ## Important Paths
 
@@ -34,6 +35,8 @@
 | KOReader plugins | `/mnt/us/koreader/plugins` | `Internal Storage/koreader/plugins` |
 | WeRead cache | `/mnt/us/koreader/weread/cache/<book_id>/` | `Internal Storage/koreader/weread/cache/<book_id>/` |
 | Screensaver images | `/mnt/us/screensavers` | `Internal Storage/screensavers` |
+
+Windows 端 Calibre 正式主书库固定为 `D:\Calibre Library`。Calibre 已配置并实测将 EPUB 发送到 `Internal Storage\KOReader_Library`。
 
 ## Device Directory Overview
 
@@ -63,6 +66,8 @@
 - 支持当前已验证的 EPUB/PDF 阅读流程。
 - KOReader 已将该目录设置为主要根目录。
 - 手机通过 FileSync 上传的 EPUB 可直接放入该目录。
+- Calibre 发送 EPUB 到该目录的路径已经实测验证。
+- 当前 Kindle 本地书库共有 73 个 EPUB 文件。
 
 ## Reading Statistics
 
@@ -82,19 +87,36 @@
 
 ## Collections
 
-KOReader Collections 是逻辑分类，不是物理文件夹。当前使用或计划使用的英文分类包括：
+KOReader Collections 是逻辑分类，不是物理文件夹。当前最终使用的 8 个 Collections 为：
 
-- `Mystery` — 悬疑
-- `Women` — 女性
-- `Chinese Lit` — 中国文学
-- `World Lit` — 外国文学 / 世界文学
-- `Literary Fiction` — 文学小说 / 纯文学
-- `Philosophy` — 哲学
-- `Essays` — 随笔 / 思考类
-- `Infinite Flow` — 无限流
-- `Farming` — 种田文
+- `Literary Fiction 文学小说`
+- `Mystery & Crime 悬疑 / 犯罪`
+- `Sci-Fi & Fantasy 科幻 / 奇幻`
+- `Infinite Flow & Game 无限流 / 游戏`
+- `Apocalypse & Survival 末世 / 生存`
+- `Women 女性`
+- `Society & Family 社会 / 家庭`
+- `Nonfiction 非虚构`
 
-这些名称只作为使用记录，不自动写入任何 KOReader 配置文件。
+Collection 成员关系保存在 `koreader/settings/collection.lua`。Calibre 分类和 KOReader Collections 是两套独立数据；同名标签不会自动同步，新增成员必须经过路径核对、备份和增量更新。
+
+## Long-term Library Workflow
+
+少量新书：
+
+```text
+手机 / FileSync → Kindle → KOReader 手动加入 Collection
+```
+
+批量新书：
+
+```text
+EPUB → Calibre → 整理元数据与分类 → 发送到 KOReader_Library → 增量更新 KOReader Collections
+```
+
+Calibre 是长期母库，Kindle 是当前阅读库。`.sdr` 保存每本书的 KOReader 阅读状态，不属于 Calibre 分类或 Collection 数据。
+
+设备备份统一保存在 `D:\Kindle Backup`。该目录是本地私密备份，不进入 Git。
 
 ## High-level Restore Order
 
