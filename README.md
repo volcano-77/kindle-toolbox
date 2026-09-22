@@ -22,6 +22,16 @@ Personal Kindle setup and configuration notes for Kindle 11th Gen 2024 (KT6).
 | Custom Screensaver | PNG screensavers and rotation | ✅ Verified |
 | SimpleUI | KOReader home screen and reading overview | ✅ Verified |
 
+## Library Management
+
+- Calibre 9.15.0 is the long-term master library manager.
+- Calibre main library: `D:\Calibre Library`
+- Calibre EPUB routing to `Internal Storage\KOReader_Library` is verified on this KT6.
+- KOReader remains the reading, progress, statistics, and Collections layer; the current Kindle library contains 73 EPUB files.
+- FileSync remains available for temporary phone-to-Kindle transfers.
+- Calibre classifications and KOReader Collections are independent data and are synchronized only through an explicit, reviewed workflow.
+- See [Calibre + KOReader library management](docs/calibre-library-management.md) for the verified workflow, field design, taxonomy, backup rules, and Collections process.
+
 ## What This Repository Is
 
 This repository records the setup that has been tested on one personal Kindle. It contains:
@@ -37,6 +47,7 @@ It does not reimplement Kindle software or vendor copies of third-party source c
 ## Directory
 
 - [Current setup](docs/current-setup.md)
+- [Calibre + KOReader library management](docs/calibre-library-management.md)
 - [Device information](docs/device-info.md)
 - [Plugins and third-party projects](docs/plugins.md)
 - [Jailbreak compatibility record](docs/jailbreak-compatibility.md)
