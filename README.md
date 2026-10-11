@@ -1,6 +1,6 @@
 # Kindle Toolbox
 
-Personal Kindle setup and configuration notes for Kindle 11th Gen 2024 (KT6).
+Configuration and verification notes for Kindle 11th Gen 2024 (KT6).
 
 ## Device
 
@@ -34,7 +34,7 @@ Personal Kindle setup and configuration notes for Kindle 11th Gen 2024 (KT6).
 
 ## What This Repository Is
 
-This repository records the setup that has been tested on one personal Kindle. It contains:
+This repository records a setup verified on one Kindle device. It contains:
 
 - device and jailbreak notes;
 - installed third-party projects and plugins;
