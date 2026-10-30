@@ -68,9 +68,23 @@
 可采用：
 
 - 将 `/mnt/us/KOReader_Library` 设置为主要根目录。
-- 使用第三方 [SimpleUI](https://github.com/doctorhetfield-cmd/simpleui.koplugin) 改善主页体验。
+- 使用 KOReader 原生文件管理器；当前设备已停用 SimpleUI。
 
-SimpleUI 已在当前设备成功加载并用作 KOReader 主页 UI，但它不是 KOReader 官方内置功能。
+SimpleUI 曾在当前设备加载并用作主页，但现因退出故障停用。它不是 KOReader 官方内置功能。
+
+## 6. SimpleUI 退出与重启按钮无效
+
+**Status:** ✅ 已通过隔离测试定位到 SimpleUI 路径
+
+在 SimpleUI 2.7.1 启用时，KOReader 与 SimpleUI 的退出操作只回到 SimpleUI 主页，SimpleUI 的重启按钮无效；相关电源菜单日志出现 `plugin` 为 nil 的报错。该现象与上游 [Issue #557](https://github.com/doctorhetfield-cmd/simpleui.koplugin/issues/557) 相似，但不能据此断言完全同因。
+
+保留插件文件并停用 SimpleUI 后，KOReader v2026.07.1 正常进入原生文件管理器，也能退出到 Kindle 原生主页。此结果支持 SimpleUI 路径为当前故障的主要触发点；没有证据要求重装 KOReader 或更改 Kindle 系统分区。当前保持 SimpleUI 停用，修复或再次启用前先备份 KOReader 设置，并验证退出路径。
+
+## 7. Moon 显示 73 本本地书，但分类为空
+
+**Status:** ✅ 原因由 v0.4.6 源码和本地备份确认
+
+Moon 扫描 EPUB 文件，但不导入 `koreader/settings/collection.lua`。默认“按文件夹分类”会将本地书库第一层目录视为分类；目前 73 本书按原路径保留，KOReader Collections 属于独立的逻辑多标签关系，所以 Moon 的分类页不会自动还原那 8 个集合。不要为恢复分类而移动 EPUB 或 `.sdr`。见 [Moon 分类迁移](moon-classification.md)。
 
 ## Safety Notes
 

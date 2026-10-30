@@ -20,7 +20,8 @@ Personal Kindle setup and configuration notes for Kindle 11th Gen 2024 (KT6).
 | WeRead plugin | WeRead bookshelf, downloads, and cached offline reading | ✅ Verified |
 | FileSync | Wireless EPUB transfer from a phone | ✅ Verified |
 | Custom Screensaver | PNG screensavers and rotation | ✅ Verified |
-| SimpleUI | KOReader home screen and reading overview | ✅ Verified |
+| SimpleUI 2.7.1 | Optional home screen; disabled after exit failure | ⚠️ Disabled |
+| Moon v0.4.6 | Local and online library plugin | ✅ Installed; 73 local books recognized |
 
 ## Library Management
 
@@ -28,6 +29,7 @@ Personal Kindle setup and configuration notes for Kindle 11th Gen 2024 (KT6).
 - Calibre main library: `D:\Calibre Library`
 - Calibre EPUB routing to `Internal Storage\KOReader_Library` is verified on this KT6.
 - KOReader remains the reading, progress, statistics, and Collections layer; the current Kindle library contains 73 EPUB files.
+- Moon v0.4.6 recognizes all 73 local books, and existing progress was spot checked on the device. Moon's category view does not import KOReader Collections. The [classification migration notes](docs/moon-classification.md) explain the data model and safe next steps.
 - FileSync remains available for temporary phone-to-Kindle transfers.
 - Calibre classifications and KOReader Collections are independent data and are synchronized only through an explicit, reviewed workflow.
 - See [Calibre + KOReader library management](docs/calibre-library-management.md) for the verified workflow, field design, taxonomy, backup rules, and Collections process.
@@ -48,6 +50,7 @@ It does not reimplement Kindle software or vendor copies of third-party source c
 
 - [Current setup](docs/current-setup.md)
 - [Calibre + KOReader library management](docs/calibre-library-management.md)
+- [Moon classification migration](docs/moon-classification.md)
 - [Device information](docs/device-info.md)
 - [Plugins and third-party projects](docs/plugins.md)
 - [Jailbreak compatibility record](docs/jailbreak-compatibility.md)
@@ -65,6 +68,7 @@ It does not reimplement Kindle software or vendor copies of third-party source c
 - [FileSync KOReader plugin](https://github.com/abrahamnm/filesync.koplugin)
 - [Kindle Custom Screensaver](https://github.com/chengandre/kindle-custom-screensaver)
 - [SimpleUI KOReader plugin](https://github.com/doctorhetfield-cmd/simpleui.koplugin)
+- [Moon KOReader plugin](https://github.com/AnkioTomas/moon)
 
 These projects are maintained by their respective authors. This repository only records installation, configuration, and results on the device described above. Third-party code and copyrights remain with their original authors.
 
