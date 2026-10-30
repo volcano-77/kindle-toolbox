@@ -1,0 +1,9 @@
+# Private local device snapshots and plugin staging artifacts.
+phase4-simpleui-isolation-20261030/
+phase5-moon-install-20261030/
+
+# Personal libraries, credentials, and sidecar data must stay local.
+*.epub
+*.sdr/
+*.sqlite3
+*.db

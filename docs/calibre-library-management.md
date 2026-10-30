@@ -12,7 +12,7 @@ Calibre 是电脑端总书库和后台管理工具，负责：
 - 批量编辑、搜索和筛选
 - 向 Kindle 发送经过整理的书籍
 
-KOReader 继续负责阅读进度、阅读统计、Calendar View、SimpleUI、Collections 和实际阅读体验。Calibre 不重复维护 KOReader 的 `Unread 未读`、`Reading 在读`、`On Hold 搁置`、`Finished 读完` 状态。
+KOReader 继续负责阅读进度、阅读统计、Calendar View、Collections 和实际阅读体验；SimpleUI 当前已停用。Calibre 不重复维护 KOReader 的 `Unread 未读`、`Reading 在读`、`On Hold 搁置`、`Finished 读完` 状态。Moon v0.4.6 已识别本地 73 本书，但其分类页不读取 KOReader Collections，详见 [Moon 分类迁移](moon-classification.md)。
 
 ## 2. Calibre Library 路径
 
@@ -55,7 +55,7 @@ Kindle 阅读端
 /mnt/us/KOReader_Library
         │
         ├── KOReader 阅读、进度、统计和 Calendar View
-        ├── SimpleUI
+        ├── Moon（本地书库；分类迁移待定）
         └── KOReader Collections
 
 手机临时通道
@@ -64,7 +64,7 @@ Kindle 阅读端
 
 FileSync 继续保留，但不作为长期正式书库入口。手机临时传入 Kindle 的书，如果以后需要正式管理，再补录进 Calibre。
 
-Calibre 是长期母库，Kindle 是当前阅读库。Calibre 分类与 KOReader Collections 是两套独立数据，同名标签不会自动同步。
+Calibre 是长期母库，Kindle 是当前阅读库。Calibre 分类、KOReader Collections 和 Moon 的单值 `category` 是三套独立数据，同名标签不会自动同步。
 
 ## 4. 分类命名规则
 

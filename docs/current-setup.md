@@ -17,12 +17,13 @@
 | Component | Status | Current use |
 | --- | --- | --- |
 | Kindle native system | ✅ Verified | Starts and remains usable after jailbreak |
-| KOReader | ✅ Verified | EPUB/PDF reading, local folders, progress, plugins, Collections |
+| KOReader v2026.07.1 | ✅ Verified | EPUB/PDF reading, local folders, progress, plugins, Collections |
 | Reading Statistics | ✅ Verified | Reading time, history, Calendar View, daily records |
-| WeRead plugin | ✅ Verified | Bookshelf, book opening, full download, local EPUB, cached offline reading |
+| WeRead plugin 1.5.2 | ✅ Verified | Bookshelf, book opening, full download, local EPUB, cached offline reading |
 | FileSync | ✅ Verified | Phone-to-Kindle wireless EPUB upload |
 | Custom Screensaver | ✅ Verified | PNG display and multi-image rotation |
-| SimpleUI | ✅ Verified | KOReader home screen and reading information |
+| SimpleUI 2.7.1 | ⚠️ Disabled | Exit and restart controls failed; KOReader's native file manager and native Kindle exit work after disabling it |
+| Moon v0.4.6 | ✅ Installed and locally tested | 653 files passed WPD SHA-256 verification; 73 local books recognized; previous reading progress spot checked. Classification migration remains open |
 | KPM | ✅ Verified | Installed and usable; exact version and source need verification |
 | Calibre 9.15.0 | ✅ Verified | Windows master library, metadata, classification, and EPUB transfer |
 
@@ -47,7 +48,9 @@ Windows 端 Calibre 正式主书库固定为 `D:\Calibre Library`。Calibre 已�
 │   ├── plugins/
 │   │   ├── filesync.koplugin/
 │   │   ├── weread.koplugin/
-│   │   └── simpleui.koplugin/
+│   │   ├── simpleui.koplugin/  (installed, disabled)
+│   │   ├── book.koplugin/      (Moon v0.4.6)
+│   │   └── book.koplugin.installing/  (inactive staging copy)
 │   └── weread/
 │       └── cache/
 ├── screensavers/
@@ -98,7 +101,7 @@ KOReader Collections 是逻辑分类，不是物理文件夹。当前最终使�
 - `Society & Family 社会 / 家庭`
 - `Nonfiction 非虚构`
 
-Collection 成员关系保存在 `koreader/settings/collection.lua`。Calibre 分类和 KOReader Collections 是两套独立数据；同名标签不会自动同步，新增成员必须经过路径核对、备份和增量更新。
+Collection 成员关系保存在 `koreader/settings/collection.lua`。Calibre 分类和 KOReader Collections 是两套独立数据；同名标签不会自动同步，新增成员必须经过路径核对、备份和增量更新。Moon v0.4.6 也不会读取该文件；其分类缺失原因和迁移边界见 [Moon 分类迁移](moon-classification.md)。
 
 ## Long-term Library Workflow
 
@@ -114,7 +117,7 @@ Collection 成员关系保存在 `koreader/settings/collection.lua`。Calibre �
 EPUB → Calibre → 整理元数据与分类 → 发送到 KOReader_Library → 增量更新 KOReader Collections
 ```
 
-Calibre 是长期母库，Kindle 是当前阅读库。`.sdr` 保存每本书的 KOReader 阅读状态，不属于 Calibre 分类或 Collection 数据。
+Calibre 是长期母库，Kindle 是当前阅读库。`.sdr` 保存每本书的 KOReader 阅读状态，不属于 Calibre 分类或 Collection 数据。Moon 当前的 73 本书识别和抽样进度检查不等于 8 个 Collections 已迁移。
 
 设备备份统一保存在 `D:\Kindle Backup`。该目录是本地私密备份，不进入 Git。
 
