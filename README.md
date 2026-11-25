@@ -8,7 +8,7 @@ Configuration and verification notes for Kindle 11th Gen 2024 (KT6).
 | --- | --- |
 | Model | Kindle 11th Generation, 2024 Release |
 | KindleModding code | KT6 |
-| Firmware | 5.19.6 |
+| Firmware | 5.20.1.0.2 (verified 2026-11-25) |
 | Jailbreak | ✅ Verified — Véra |
 
 ## Current Setup
@@ -21,7 +21,7 @@ Configuration and verification notes for Kindle 11th Gen 2024 (KT6).
 | FileSync | Wireless EPUB transfer from a phone | ✅ Verified |
 | Custom Screensaver | PNG screensavers and rotation | ✅ Verified |
 | SimpleUI 2.7.1 | Optional home screen; disabled after exit failure | ⚠️ Disabled |
-| Moon v0.4.6 | Local and online library plugin | ✅ Installed; 73 local books recognized |
+| Moon v0.7.2 | Library and third-party sources | ✅ WeRead reading and sync verified; Fanqie online reading verified |
 
 ## Library Management
 
@@ -50,6 +50,7 @@ It does not reimplement Kindle software or vendor copies of third-party source c
 
 - [Current setup](docs/current-setup.md)
 - [Calibre + KOReader library management](docs/calibre-library-management.md)
+- [Moon third-party source installation and maintenance](docs/plugins.md#moon-third-party-sources)
 - [Moon classification migration](docs/moon-classification.md)
 - [Device information](docs/device-info.md)
 - [Plugins and third-party projects](docs/plugins.md)

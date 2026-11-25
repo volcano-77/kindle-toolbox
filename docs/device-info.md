@@ -2,7 +2,8 @@
 
 - Device: Kindle 11th Generation, 2024 Release
 - KindleModding device code: KT6
-- Firmware: 5.19.6
+- Current firmware: 5.20.1.0.2 (verified 2026-11-25)
+- Firmware at the original Véra jailbreak: 5.19.6
 - Storage: 16 GB
 - Jailbreak: ✅ Verified — Véra completed successfully on this device
 - KOReader: ✅ Verified

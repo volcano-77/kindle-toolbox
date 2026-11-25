@@ -8,7 +8,7 @@
 | --- | --- |
 | Model | Kindle 11th Generation, 2024 Release |
 | KindleModding code | KT6 |
-| Firmware | 5.19.6 |
+| Firmware | 5.20.1.0.2 (2026-11-25) |
 | Storage | 16 GB |
 | Jailbreak | ✅ Verified — Véra completed successfully |
 
@@ -23,7 +23,9 @@
 | FileSync | ✅ Verified | Phone-to-Kindle wireless EPUB upload |
 | Custom Screensaver | ✅ Verified | PNG display and multi-image rotation |
 | SimpleUI 2.7.1 | ⚠️ Disabled | Exit and restart controls failed; KOReader's native file manager and native Kindle exit work after disabling it |
-| Moon v0.4.6 | ✅ Installed and locally tested | 653 files passed WPD SHA-256 verification; 73 local books recognized; previous reading progress spot checked. Classification migration remains open |
+| Moon v0.7.2 | ✅ Installed | [Third-party sources](plugins.md#moon-third-party-sources) restored on 2026-11-25. See the [historical v0.4.6 local-library record](moon-classification.md) for classification findings |
+| Moon WeRead source v0.2.0 | ✅ Verified | Reading, progress sync, and reading-time sync |
+| Moon Fanqie source v0.2.0 | ✅ Verified | Online reading |
 | KPM | ✅ Verified | Installed and usable; exact version and source need verification |
 | Calibre 9.15.0 | ✅ Verified | Windows master library, metadata, classification, and EPUB transfer |
 
@@ -49,7 +51,9 @@ Windows 端 Calibre 正式主书库固定为 `D:\Calibre Library`。Calibre 已�
 │   │   ├── filesync.koplugin/
 │   │   ├── weread.koplugin/
 │   │   ├── simpleui.koplugin/  (installed, disabled)
-│   │   ├── book.koplugin/      (Moon v0.4.6)
+│   │   ├── book.koplugin/      (Moon v0.7.2)
+│   │   ├── moonsource-weread.koplugin/
+│   │   ├── moonsource-fanqie.koplugin/
 │   │   └── book.koplugin.installing/  (inactive staging copy)
 │   └── weread/
 │       └── cache/

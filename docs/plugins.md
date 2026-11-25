@@ -4,7 +4,7 @@
 
 ## Status Legend
 
-- ✅ Verified — 已在当前 KT6 + 5.19.6 设备上实际测试
+- ✅ Verified — 已在这台 KT6 上实际测试，具体版本以各项记录为准
 - 🟡 To Verify — 尚未完成实际测试或信息核对
 - ⚪ Optional — 非当前核心配置
 - ❌ Not Used — 当前未使用
@@ -19,7 +19,7 @@
 | FileSync | [abrahamnm/filesync.koplugin](https://github.com/abrahamnm/filesync.koplugin) | 手机无线文件传输 | Needs verification | `/mnt/us/koreader/plugins/filesync.koplugin` | ✅ Verified |
 | Custom Screensaver | [chengandre/kindle-custom-screensaver](https://github.com/chengandre/kindle-custom-screensaver) | 替换原生屏保并轮播 PNG | Needs verification | Exact extension path needs verification; images use `/mnt/us/screensavers` | ✅ Verified |
 | SimpleUI | [doctorhetfield-cmd/simpleui.koplugin](https://github.com/doctorhetfield-cmd/simpleui.koplugin) | 可选 KOReader 主页 | 2.7.1 | `/mnt/us/koreader/plugins/simpleui.koplugin` | ⚠️ Installed, disabled |
-| Moon | [AnkioTomas/moon](https://github.com/AnkioTomas/moon) | 本地书库与在线书源 | v0.4.6 | `/mnt/us/koreader/plugins/book.koplugin` | ✅ Installed; local library tested |
+| Moon | [AnkioTomas/moon](https://github.com/AnkioTomas/moon) | 本地书库与在线书源 | v0.7.2 | `/mnt/us/koreader/plugins/book.koplugin` | ✅ Installed |
 | KPM | Source needs verification | Kindle 插件管理与兼容工具链 | Needs verification | Needs verification | ✅ Verified |
 
 ## KOReader
@@ -92,12 +92,46 @@
 ## Moon
 
 - **Repository:** [AnkioTomas/moon](https://github.com/AnkioTomas/moon)
-- **Installed Version:** v0.4.6 正式版
+- **Installed Version:** v0.7.2（2026-11-25）
 - **Install Path:** `/mnt/us/koreader/plugins/book.koplugin`
 - **Installation Method:** Windows MTP 直接复制正式目录；资源管理器和 WPD 属性更新均未能重命名先前的暂存目录。
-- **Status:** ✅ 653 个文件、106 个子目录经 WPD `STGM_READ` 全量校验；用户在设备上确认识别 73 本本地书，并抽查原阅读进度。
+- **Historical verification:** v0.4.6 的文件校验和本地书库实测见 [Moon 分类迁移](moon-classification.md)。
 - **Open item:** 本地书分类未从 KOReader Collections 导入。详见 [moon-classification.md](moon-classification.md)。
 - **Staging copy:** `book.koplugin.installing` 仍在设备上，未删除；它不是正式插件目录。
+
+## Moon Third-Party Sources
+
+记录日期 2026-11-25。实测环境为 Kindle KT6、固件 5.20.1.0.2、KOReader v2026.07.1、月读 v0.7.2。
+
+| 书源 | 版本 | 设备实测 |
+| --- | --- | --- |
+| 微信读书 | v0.2.0 | 正常阅读、阅读进度同步、阅读时长同步均通过 |
+| 番茄小说 | v0.2.0 | 在线阅读通过 |
+
+两个书源的离线阅读均待验证。原有独立 WeRead 插件保留在 `weread.koplugin`，其缓存阅读实测属于独立插件。
+
+- 月读自 v0.6.0 起将原内置平台书源拆出，第三方插件由 GarfieldTony 维护。 [月读数据源手册](https://moon.ankio.net/manual/library/sources) · [第三方书源安装说明](https://moon.ankio.net/manual/library/sources/plugins)
+- 从维护者的发布页获取对应 ZIP 和同一版本的 `SHA256SUMS`。 [moon-source Releases](https://codeberg.org/GarfieldTony/moon-source/releases) · [本次使用的 v0.2.0](https://codeberg.org/GarfieldTony/moon-source/releases/tag/v0.2.0)
+
+### 安装与迁移
+
+1. 退出 KOReader 后连接 USB。在 Windows 的 MTP 设备中打开 `Internal Storage/koreader/plugins`，对应 Kindle 上的 `/mnt/us/koreader/plugins`。本设备通过 MTP 访问，无盘符。
+2. 首次迁移前，将月读数据备份到本机私有位置。至少保存 `koreader/.moon/book.sqlite3`（如有 SQLite 边车文件则一并保存）、微信书源与公共书源设置，以及旧的 `.moon/cache/wechat`。本次在安装微信书源前核对了备份的路径和文件大小，并对数据库执行了 SQLite 完整性检查。备份、账号数据和插件 ZIP 只留在本地。
+3. 下载 `moonsource-weread.koplugin-0.2.0.zip` 和 `moonsource-fanqie.koplugin-0.2.0.zip`，按发布者提供的校验表核对 SHA-256。解压后将两个 `moonsource-*.koplugin` 目录分别放在 `book.koplugin` 同级。检查 `main.lua`、`_meta.lua` 和 `moon_source.lua` 直接位于各插件根目录。本次从设备回读并逐文件校验，微信 36 个文件、番茄 24 个文件全部匹配。
+4. 微信书源首次加载时会尝试把月读旧源 ID 从 `wechat` 迁移到 `weread`，涉及设置、数据库记录和缓存路径。迁移会清空已处理的旧设置项，同步时还会清理旧版归入书库的公众号条目及其关联记录。确认备份和迁移范围后再首次启动月读。
+5. 断开 USB，重启 KOReader，进入月读 **设置 → 书库 → 启用的书源** 勾选对应书源。到 **账号** 查看登录状态，按提示用微信或番茄小说 App 扫码，然后到月读图书馆切换书源并刷新。
+
+### 更新与兼容性
+
+- 月读本体 `book.koplugin` 单独发布。月读内的入口为 **设置 → 我的设备 → 版本**。 [月读本体 Releases](https://github.com/AnkioTomas/moon/releases)
+- 第三方书源有独立的 Codeberg 版本和安装包。初装走手动复制。v0.2.0 自带 **设置 → 书库 → 更新**，可手动检查，也可启用自动检查。发现新版后会提示确认，确认安装时会一并更新已安装的该系列书源。也可从发布页手动下载并校验后更新。更新月读本体后，仍需单独检查书源版本。
+- 更新前记录当前 KOReader、月读和书源版本，阅读双方发布说明，核对最低版本和迁移要求。此次最低要求为 KOReader 2026.07、月读 0.6.0，已验证组合见本节开头。先保留可用的插件版本和私有数据快照，再更新一个组件或一组同版本书源。重启后检查书源出现、账户状态和在线阅读，再分别用同一本书验证双向进度、适用书源的时长同步，以及断网后重开已缓存章节。
+
+### 故障与回滚
+
+1. 书源未出现时，检查目录层级、三个 Lua 入口和启用状态，再核对发布版本与 KOReader、月读兼容性。登录或同步异常时，先检查网络、账号状态和发布者已知问题。 [番茄书架新增书籍同步问题](https://github.com/AnkioTomas/moon/issues/152)
+2. 若故障出现在更新后，先禁用受影响的书源并重启。若月读无法打开，退出 KOReader 后通过 MTP 将受影响的插件目录移出 `plugins/`。保留当前数据快照，按需要恢复相应的已验证插件版本，并复查其数据格式兼容性。
+3. 插件文件回退不会逆转数据迁移。若确需回退数据，应先保存故障后的数据，评估恢复旧快照会丢失哪些新增进度或书架变更，再由用户确认。退出 KOReader 后成套恢复兼容版本的数据库、相关设置和缓存，而非单独覆盖数据库。不要为恢复单个书源而随意降级月读或清空数据。
 
 ## KPM
 
